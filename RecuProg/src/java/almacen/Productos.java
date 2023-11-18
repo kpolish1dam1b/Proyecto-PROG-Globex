@@ -1,15 +1,18 @@
+package almacen;
+
 public class Productos {
-    public enum Type {RAM, Graficas, Placas, Fuentes, SSD;}
+    public enum Type {RAM, GRAFICAS, PLACAS, FUENTES, SSD;}
 
     private Type type;
     private float price;
-    private long id;
+    private int id;
+    private int contador = 0; //contador para asignar un id único a cada producto
     private String modelo;
 
-    public Productos(Type type, float price, long id, String modelo) {
+    public Productos(Type type, float price, String modelo) {
         this.type = type;
         this.price = price;
-        this.id = id;
+        this.id = ++contador;
         this.modelo = modelo;
     }
 
@@ -25,17 +28,13 @@ public class Productos {
         return price;
     }
 
-    //método para cambiar precio
-    public void setPrice(float price) {
+    //setter del precio
+    public void cambiarPrecio(float price) {
         this.price = price;
     }
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getModelo() {
